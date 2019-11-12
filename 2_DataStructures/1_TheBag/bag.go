@@ -7,25 +7,20 @@ type Bag struct {
 	// TODO: Add fields here for storing items. You can use any data structure
 	// you want (there is no "right" answer). The fields you add here will be
 	// accessible in the methods below. See: https://gobyexample.com/methods
-	items[] int
+	items []int
 	amount int
 }
 
 // NewBag is used to create an instance of a Bag.
 func NewBag() *Bag {
-	return &Bag{
-		// TODO: If necessary, initialize fields here.
-		b.items [10]int
-		b.amount = 0
-	}
+	return &Bag{}
 }
 
 // Add inserts an item into the bag. The bag should accept and store duplicate
 // items (i.e. it is not a set).
 func (b *Bag) Add(i int) {
-	
-	b.items[0] = i
-	items++
+	b.items = append(b.items, i)
+	b.amount++
 	return
 }
 
@@ -33,22 +28,28 @@ func (b *Bag) Add(i int) {
 // items in the bag, it should only remove one of them. If the item does not
 // exist in the bag, it should silently do nothing.
 func (b *Bag) Remove(i int) {
-	// TODO: Implement the Remove method.
-
+	for index := 0; index < len(b.items); index++ {
+		if (b.items[index] == i){
+			b.items = append(b.items[:index],b.items[index+1:]...)
+			b.amount--
+		}
+	}
 	return
 }
 
 // Contains returns true if the given item exists in the bag, and false
 // otherwise.
 func (b *Bag) Contains(i int) bool {
-	// TODO: Implement the Contains method.
+  for index := 0; index < len(b.items); index++ {
+	  if (b.items[index] == i){
+		  return true
+	  }
+  }
 
 	return false
 }
 
 // Size returns the number of items in the bag.
 func (b *Bag) Size() int {
-	// TODO: Implement the size method.
-
 	return b.amount
 }
